@@ -2,8 +2,11 @@
    "name": "next-prisma-tailwind-ecommerce-cms",
    "version": "0.1.0",
    "private": true,
+   "prisma": {
+      "seed": "node --loader ts-node/esm prisma/seed.ts"
+   },
    "scripts": {
-      "dev": "next dev -p 8888",
+      "dev": "next dev -p 8888 -H 0.0.0.0",
       "build": "next build",
       "start": "next start",
       "lint": "next lint",
@@ -42,7 +45,7 @@
       "@tanstack/react-table": "^8.20.5",
       "class-variance-authority": "^0.7.0",
       "clsx": "^2.1.1",
-      "cmdk": "^1.0.0",
+      "cmdk": "^1.1.1",
       "date-fns": "^4.1.0",
       "jose": "^5.9.4",
       "lucide-react": "^0.452.0",
@@ -60,7 +63,7 @@
    },
    "devDependencies": {
       "@trivago/prettier-plugin-sort-imports": "^4.3.0",
-      "@types/node": "22.7.5",
+      "@types/node": "^22.15.21",
       "@types/react": "18.3.11",
       "@types/react-dom": "18.3.1",
       "autoprefixer": "10.4.20",
@@ -73,6 +76,7 @@
       "tailwind-merge": "^2.5.3",
       "tailwindcss": "3.4.13",
       "tailwindcss-animate": "^1.0.7",
-      "typescript": "5.6.3"
+      "ts-node": "^10.9.2",
+      "typescript": "^5.8.3"
    }
 }

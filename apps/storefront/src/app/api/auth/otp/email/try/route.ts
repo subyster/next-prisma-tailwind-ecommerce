@@ -26,6 +26,7 @@ export async function POST(req: NextRequest) {
                OTP,
             },
          })
+         console.log("reached stage 1")
 
          await sendMail({
             name: config.name,
@@ -33,6 +34,7 @@ export async function POST(req: NextRequest) {
             subject: 'Verify your email.',
             html: await render(Mail({ code: OTP, name: config.name })),
          })
+         console.log("reached stage 2")
 
          return new NextResponse(
             JSON.stringify({
