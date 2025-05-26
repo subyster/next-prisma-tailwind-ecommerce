@@ -2,11 +2,13 @@
 
 import { DataTable } from '@/components/ui/data-table'
 import { ColumnDef } from '@tanstack/react-table'
+import { EditIcon } from 'lucide-react'
+import Link from 'next/link'
 import { useParams, useRouter } from 'next/navigation'
 
 interface Order {
    id: string
-   date: string // ISO date string
+   date: string
    total: number
    customer: string
 }
@@ -48,7 +50,7 @@ export const LastOrders: React.FC<LastOrdersProps> = ({ data }) => {
             </p>
          </div>
          <DataTable
-            searchKey="customerName"
+            searchKey="customer"
             columns={ordersSummaryColumns}
             data={data}
          />
@@ -66,7 +68,15 @@ export const topSellingProductsColumns: ColumnDef<TopSellingProduct>[] = [
    {
       accessorKey: 'productName',
       header: 'Product',
-      cell: ({ row }) => <div>{row.getValue('productName')}</div>,
+      cell: ({ row }) => (
+         <Link
+            href={`/products/${row.original.productId}`}
+            className="hover:text-blue-600 hover:underline ease-out"
+         >
+            {row.getValue('productName')}
+            <EditIcon className="inline h-4 ml-1" />
+         </Link>
+      ),
    },
    {
       accessorKey: 'totalSold',
